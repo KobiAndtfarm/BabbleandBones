@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float velocity = 0;
     public float gravity = 9.8f;
     public Camera cam;
+    public bool toolkit;
 
     private void Start()
     {
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         CheckIfSprinting();
+        CheckIfStunning();
+        CheckToolKitStatus();
         if (isSprinting)
         {
             currentSpeed = sprintSpeed;
@@ -60,5 +63,30 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    
+    public void CheckIfStunning()
+    {
+        if (Input.GetKeyUp(KeyCode.Mouse1))
+        {
+            isStunning = true;
+            Debug.Log("stun key pressed");
+        }
+        else
+        {
+            isStunning = false;
+            
+        }
+    }
+
+    public void CheckToolKitStatus()
+    {
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            toolkit = true;
+            Debug.Log("toolkit opened");
+        }
+        else
+        {
+            Debug.Log("toolkit closed");
+        }
+    }
 }
