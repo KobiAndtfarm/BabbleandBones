@@ -6,16 +6,18 @@ using TMPro;
 public class GameController : MonoBehaviour
 {
     public float timeTillMorning;
-    private bool partOne, partTwo, partThree;
+    public bool partOne, partTwo, partThree, horde;
     public GameObject clueCard;
     private bool gameOver;
     public TMP_Text overlayText;
     private bool gateUnlocked;
+    public ParanormalController PC;
 
 
     public void Start()
     {
         partOne = true;
+        PC = GetComponent<ParanormalController>();
     }
     void Update()
     {
@@ -47,6 +49,10 @@ public class GameController : MonoBehaviour
     public void PartOne()
     {
         clueCard.SetActive(true);
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            PC.firstHunt = true;
+        }
     } 
     public void PartTwo()
     {
@@ -61,6 +67,7 @@ public class GameController : MonoBehaviour
             overlayText.enabled = false;
         }
         gateUnlocked = true;
+        Debug.Log("gate unlocked");
     }
 
     public void GameOver()
