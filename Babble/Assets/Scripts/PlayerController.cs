@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     public bool isSprinting;
     public float mouseSensitivity;
     public float currentSpeed;
+    private float mouseUp, mouseDown, mouseLookLimit;
   
     void Update()
     {
@@ -23,8 +24,10 @@ public class PlayerController : MonoBehaviour
         {
             currentSpeed = walkSpeed;
         }
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * mouseSensitivity, 0)));
-        rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse Y") * mouseSensitivity, 0)));
+        mouseDown -= Input.GetAxis("Mouse Y") * mouseSensitivity;
+        mouseDown = Mathf.Clamp(mouseDown, -mouseLookLimit, mouseLookLimit);
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(Input.GetAxis("Mouse X") * mouseSensitivity,0,0)));
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0, mouseDown, 0)));
         rb.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * currentSpeed) + (transform.right * Input.GetAxis("Horizontal") * currentSpeed));
       
     }
