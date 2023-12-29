@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
             currentSpeed = walkSpeed;
         }
         rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse X") * mouseSensitivity, 0)));
+        rb.MoveRotation(rb.rotation * Quaternion.Euler(new Vector3(0, Input.GetAxis("Mouse Y") * mouseSensitivity, 0)));
         rb.MovePosition(transform.position + (transform.forward * Input.GetAxis("Vertical") * currentSpeed) + (transform.right * Input.GetAxis("Horizontal") * currentSpeed));
       
     }
