@@ -11,6 +11,11 @@ public class Mummy : MonoBehaviour
     public List<string> toolsRequired;
     public string toolToAdd;
 
+    //Follow Player
+    public float speed = 20.0f;
+    public float minDist = 1f;
+    public Transform target;
+
 
     public void OnEnable()
     {
@@ -61,9 +66,11 @@ public class Mummy : MonoBehaviour
     {
         toolsRequired.Clear();
     }
-    public void FollowPlayer()
-    {
 
+    // Set the target of the chaser
+    public void SetTarget(Transform newTarget)
+    {
+        target = newTarget;
     }
 
     public void OnDeath()
