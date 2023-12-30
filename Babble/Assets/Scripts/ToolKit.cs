@@ -40,7 +40,7 @@ public class ToolKit : MonoBehaviour
                 mummy.OnDeath();
                 currentToolNumber = 0;
                 selectedTools.Clear();
-
+                
             }
             else 
             {
