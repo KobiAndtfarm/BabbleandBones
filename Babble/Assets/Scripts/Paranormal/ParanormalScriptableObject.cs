@@ -9,4 +9,8 @@ public class ParanormalScriptableObject : ScriptableObject
     public string ItemType;
 
     public string[] Weakness;
+
+    public GameObject prefab;
+
+ 
 }
