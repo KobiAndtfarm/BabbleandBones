@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     public float gravity = 9.8f;
     public Camera cam;
     public bool toolkit;
+    public GameObject stunLight;
+
 
     private void Start()
     {
@@ -73,6 +75,15 @@ public class PlayerController : MonoBehaviour
         else
         {
             isStunning = false;
+            
+        }
+    }
+    
+    public void Stun()
+    {
+        if (isStunning)
+        {
+            stunLight.SetActive(true);
             
         }
     }

@@ -5,9 +5,7 @@ using UnityEngine;
 public class ToolKit : MonoBehaviour
 {
     public List<string> selectedTools;
-    public Ghost ghost;
-    public Zombie zombie;
-    public Mummy mummy;
+    public Creature creature;
     public string pressedTool;
     public int currentToolNumber=0;
     public ParanormalController paraC;
@@ -29,15 +27,14 @@ public class ToolKit : MonoBehaviour
     }
     public void CheckIfFinished()
     {
-        if(currentToolNumber == ghost.toolsRequired.Count)
+        if(currentToolNumber == creature.toolsRequired.Count)
         {
-            if (selectedTools == ghost.toolsRequired)
+            if (selectedTools == creature.toolsRequired)
             {
                 paraC.eventEnd = true;
                 Debug.Log("paranormal defeated");
-                ghost.OnDeath();
-                zombie.OnDeath();
-                mummy.OnDeath();
+                creature.OnDeath();
+             
                 currentToolNumber = 0;
                 selectedTools.Clear();
                 

@@ -8,16 +8,15 @@ public class GameController : MonoBehaviour
     public float timeTillMorning;
     public bool partOne, partTwo, partThree, horde;
     public GameObject clueCard;
-    private bool gameOver;
     public TMP_Text overlayText;
-    private bool gateUnlocked;
     public ParanormalController PC;
-
+    public ClueCard CC;
 
     public void Start()
     {
         partOne = true;
         PC = GetComponent<ParanormalController>();
+        CC = GetComponent<ClueCard>();
     }
     void Update()
     {
@@ -43,7 +42,7 @@ public class GameController : MonoBehaviour
     {
         if(timeTillMorning <= 0)
         {
-            gameOver = true;
+            GameOver();
         }
     }
     public void PartOne()
@@ -52,11 +51,17 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             PC.firstHunt = true;
+            //turn on location
+            
         }
     } 
     public void PartTwo()
     {
         clueCard.SetActive(true);
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            //turn on location
+        }
     } 
     public void PartThree()
     {
@@ -66,12 +71,17 @@ public class GameController : MonoBehaviour
         {
             overlayText.enabled = false;
         }
-        gateUnlocked = true;
+        GateUnlocked();
         Debug.Log("gate unlocked");
     }
 
     public void GameOver()
     {
         Debug.Log("game over");
+    }
+
+    public void GateUnlocked()
+    {
+
     }
 }
