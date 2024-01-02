@@ -5,15 +5,17 @@ using UnityEngine.UI;
 
 public class DollTrigger : MonoBehaviour
 {
-    public Sprite doll;
+    public SpriteRenderer doll;
     public Sprite newDollSprite;
     public void OnTriggerStay(Collider other)
     {
-        if (gameObject.tag == "Player")
+        if (other.tag == "Player")
         {
+            Debug.Log("player");
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                doll= newDollSprite;
+                doll.sprite= newDollSprite;
+                Debug.Log("player in trigger zone");
             }
         }
     }
