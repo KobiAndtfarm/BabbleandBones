@@ -13,7 +13,7 @@ public class DollTrigger : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                doll = newDollSprite;
+                doll= newDollSprite;
             }
         }
     }
