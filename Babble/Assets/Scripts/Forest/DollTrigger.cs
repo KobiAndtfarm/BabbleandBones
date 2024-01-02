@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DollTrigger : MonoBehaviour
 {
-    public Image doll;
+    public Sprite doll;
     public Sprite newDollSprite;
     public void OnTriggerStay(Collider other)
     {
@@ -13,7 +13,7 @@ public class DollTrigger : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Mouse1))
             {
-                doll.sprite = newDollSprite;
+                doll = newDollSprite;
             }
         }
     }
