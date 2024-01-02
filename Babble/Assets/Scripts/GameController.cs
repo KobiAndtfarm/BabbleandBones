@@ -51,8 +51,8 @@ public class GameController : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
             PC.firstHunt = true;
-            //turn on location
-            
+            clueCard.SetActive(false);
+
         }
     } 
     public void PartTwo()
@@ -60,7 +60,7 @@ public class GameController : MonoBehaviour
         clueCard.SetActive(true);
         if (Input.GetKeyUp(KeyCode.Mouse0))
         {
-            //turn on location
+            clueCard.SetActive(false);
         }
     } 
     public void PartThree()

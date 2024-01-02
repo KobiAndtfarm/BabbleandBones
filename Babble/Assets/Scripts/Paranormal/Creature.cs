@@ -10,6 +10,7 @@ public class Creature : MonoBehaviour
     public Vector3 position;
     public List<string> toolsRequired;
     public string toolToAdd;
+    public PlayerController PC;
 
     //follow player
     public float speed = 20.0f;
@@ -18,6 +19,7 @@ public class Creature : MonoBehaviour
 
     public void Start()
     {
+        PC = GetComponent<PlayerController>();
         // if no target specified, assume the player
         if (target == null)
         {
@@ -43,6 +45,15 @@ public class Creature : MonoBehaviour
         //so long as the chaser is farther away than the minimum distance, move towards it at rate speed.
         if (distance > minDist)
             transform.position += transform.forward * speed * Time.deltaTime;
+
+        if (PC.isStunning)
+        {
+            speed = 10f;
+        }
+        else
+        {
+            speed = 20f;
+        }
     }
 
     public void OnEnable()

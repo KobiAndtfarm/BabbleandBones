@@ -12,17 +12,11 @@ public class ClueCard : MonoBehaviour
     public Vector3 position;
     private string currentClueCardColor;
     public string clueAnswer;
-
-    void Start()
-    {
-        
-    }
+    public GameObject house;
+    public GameObject cave;
+    public GameObject doll;
 
 
-    void Update()
-    {
-        
-    }
 
     public void OnEnable()
     {
@@ -31,23 +25,26 @@ public class ClueCard : MonoBehaviour
             int i = Random.Range(0, 3);
             currentClueCardColor = color[i].color;
 
-            //might wish to do this in scene seting UI active
+            //might wish to do this in scene setting UI active
             color[i].colorPrefab = Resources.Load(color[i].color) as GameObject;
             Instantiate(color[i].colorPrefab, position, Quaternion.identity);
         }
         if(currentClueCardColor == "Red")
         {
             Red();
+            house.SetActive(true);
             Debug.Log("redClue");
         }
         if(currentClueCardColor == "Blue")
         {
             Blue();
+            doll.SetActive(true);
             Debug.Log("blueClue");
         }
         if(currentClueCardColor == "White")
         {
             White();
+            cave.SetActive(true);
             Debug.Log("whiteClue");
         }
         else
